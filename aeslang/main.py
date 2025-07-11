@@ -1,10 +1,11 @@
 import argparse
+import os
 from aeslang.interpreter import aeslang_to_python, python_to_aeslang
 
 def main():
     parser = argparse.ArgumentParser(description="AESLang Interpreter")
-    parser.add_argument('--from-aes', help="Run AESLang code from a .aes file")
-    parser.add_argument('--to-aes', help="Convert Python code to AESLang")
+    parser.add_argument('--from-aes', help='Run a .aes file (AESLang to Python)')
+    parser.add_argument('--to-aes', help='Convert Python file to AESLang')
 
     args = parser.parse_args()
 
@@ -22,6 +23,9 @@ def main():
         aes_code = python_to_aeslang(py_code)
         print("=== AESLang Code ===")
         print(aes_code)
+
+    else:
+        parser.print_help()
 
 if __name__ == "__main__":
     main()
